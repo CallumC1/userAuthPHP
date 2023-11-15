@@ -1,0 +1,1 @@
+<!-- Could be used to start a session if imported on every page. -->
