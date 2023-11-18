@@ -12,7 +12,7 @@
         <li><a href="/userauthphp/pages/login.php" class="py-5 px-4 hover:bg-slate-800">Login</a></li>
         <li><a href="/userauthphp/pages/signup.php" class="py-5 px-4 hover:bg-slate-800">Sign-up</a></li>
         <li><a href="/userauthphp/pages/dashboard.php" class="py-5 px-4 hover:bg-slate-800">Dashboard</a></li>
-        <li><a href="/userauthphp/handlers/destroy.php" class="py-5 px-4 hover:bg-slate-800">Destroy Session</a></li>
+        <li><a href="/userauthphp/handlers/destroy_session.php" class="py-5 px-4 hover:bg-slate-800">Destroy Session</a></li>
     </ul>
 </nav>
 

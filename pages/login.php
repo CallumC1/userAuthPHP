@@ -1,9 +1,12 @@
 <?php include("../comp/header.php") ?>
-
+<?php
+session_start();
+session_regenerate_id();
+?>
 <div class="flex flex-col items-center justify-center mt-[7rem]">
     <div class="bg-slate-50 drop-shadow-xl w-[22rem] h-full border-2 border-black p-4">
 
-        <form action="userauthphp/handlers/signup_process.php" method="POST" class="userAuth">
+        <form action="/userauthphp/handlers/login_process.php" method="POST" class="userAuth">
 
             <p class="text-xl font-bold text-center underline">Login</p>
 

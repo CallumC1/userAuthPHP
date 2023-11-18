@@ -1,4 +1,5 @@
 <?php include("../comp/header.php") ?>
+<?php session_start(); ?>
 <body>
 
 
@@ -9,6 +10,12 @@
             <br>This also uses PHP Sessions to keep track of the authenticated status.
             <br><b>Goal: The goal of this is to make it as secure as possible and as portable as possible.</b>
         </p>
+    </div>
+
+    <div>
+        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["user_id"] : "" ?>
+        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated_on"] : "" ?>
+        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated"] : "" ?>
     </div>
 </body>
 </html>
