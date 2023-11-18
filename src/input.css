@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.userAuth {
+    @apply text-sm
+}
+
+.userAuth input:nth-child(-n+4) {
+    @apply border-2 rounded-sm py-1 pl-2 transition ease-in-out duration-200 bg-transparent focus:outline-none focus:border-green-500 text-sm;
+}
+
+.userAuth span label {
+    @apply font-semibold;
+}
+

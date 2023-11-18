@@ -1,3 +1,6 @@
+.vscode/launch.json
+
+
 # Ignore Node dirs
 node_modules/
 
