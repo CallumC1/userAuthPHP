@@ -10,6 +10,14 @@ $first_name = isset($formData['first_name']) ? htmlspecialchars($formData['first
 $last_name = isset($formData['last_name']) ? htmlspecialchars($formData['last_name']) : '';
 $email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
 
+// Check for $_GET messages.
+if (isset($_GET["msg"]))
+{
+    $msg = $_GET["msg"];
+} else {
+    $msg = NULL;
+}
+
 ?>
 <div class="flex flex-col items-center justify-center mt-[7rem]">
     <div class="bg-slate-50 drop-shadow-xl w-[22rem] h-full border-2 border-black p-4">
@@ -33,14 +41,14 @@ $email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
                 <span class="flex flex-col">
                     <label for="email">Email </label>
                     <input type="email" id="email" name="email" placeholder="Your email address" value="<?=$email?>" required>
-                    <?= isset($_GET["msg"]) && $_GET["msg"] === "invalid-user" ? "<p class='text-red-500'>Account with email does not exist.</p>" : "" ?>
+                    <?= $msg === "invalid-user" ? "<p class='text-red-500'>Account with email does not exist.</p>" : "" ?>
                 </span>
 
                 <span class="flex flex-col">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Your password" required>
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
-                    <?= isset($_GET["msg"]) && $_GET["msg"] === "invalid-password" ? "<p class='text-red-500 mt-2'>Password incorrect.</p>" : "" ?>
+                    <?= $msg === "invalid-password" ? "<p class='text-red-500 mt-2'>Password incorrect.</p>" : "" ?>
                 </span>
 
             </div>

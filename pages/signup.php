@@ -10,6 +10,15 @@ $first_name = isset($formData['first_name']) ? htmlspecialchars($formData['first
 $last_name = isset($formData['last_name']) ? htmlspecialchars($formData['last_name']) : '';
 $email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
 
+
+// Check for $_GET messages.
+if (isset($_GET["msg"]))
+{
+    $msg = $_GET["msg"];
+} else {
+    $msg = NULL;
+}
+
 ?>
 <body>
 
@@ -35,14 +44,16 @@ $email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
                 <span class="flex flex-col">
                     <label for="email">Email </label>
                     <input type="email" id="email" name="email" placeholder="Your email address" value="<?=$email?>" required>
-                    <?= isset($_GET["msg"]) && $_GET["msg"] === "email-already-exists" ? "<p class='text-red-500'>Email already has an account linked.</p>" : "" ?>
+                    <!-- I think these _GET calls are excessive, there is a better way to do this. -->
+                    <!-- Do one $_GET call at the top to avoid having to call it every time. -->
+                    <?= $msg === "email-already-exists" ? "<p class='text-red-500'>Email already has an account linked.</p>" : "" ?>
                 </span>
 
                 <span class="flex flex-col">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
-                    <?= isset($_GET["msg"]) && $_GET["msg"] === "password-short" ? "<p class='text-red-500 mt-2'>Password too short. Must be 4+ chars.</p>" : "" ?>
+                    <?= $msg === "password-short" ? "<p class='text-red-500 mt-2'>Password too short. Must be 4+ chars.</p>" : "" ?>
                 </span>
 
             </div>
