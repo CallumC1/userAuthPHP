@@ -44,8 +44,6 @@ if (isset($_GET["msg"]))
                 <span class="flex flex-col">
                     <label for="email">Email </label>
                     <input type="email" id="email" name="email" placeholder="Your email address" value="<?=$email?>" required>
-                    <!-- I think these _GET calls are excessive, there is a better way to do this. -->
-                    <!-- Do one $_GET call at the top to avoid having to call it every time. -->
                     <?= $msg === "email-already-exists" ? "<p class='text-red-500'>Email already has an account linked.</p>" : "" ?>
                 </span>
 
