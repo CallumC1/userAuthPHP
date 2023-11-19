@@ -1,23 +1,32 @@
 <?php
 session_start();
 session_regenerate_id(true);
-$formData = [
-    'first_name' => $_POST['first_name'],
-    'last_name'  => $_POST['last_name'],
-    'email'      => $_POST['email'],
-];
-$_SESSION['signup_form_data'] = $formData;
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    require("./connect_db.php");
-    $conn = connect_to_database();
-    
-    
+
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    $formData = [
+        'first_name' => $first_name,
+        'last_name'  => $last_name,
+        'email'      => $email,
+    ];
+    $_SESSION['signup_form_data'] = $formData;
+
+    if (strlen($password) < 5) {
+        echo("Password too short.");
+        header("Location: /userauthphp/pages/signup.php?msg=password-short");
+        exit();
+    };
+
+
+    require("./connect_db.php");
+    $conn = connect_to_database();
+    
 
     // Check if user email is already in database.
     $sql = "SELECT * FROM users WHERE email = ?";

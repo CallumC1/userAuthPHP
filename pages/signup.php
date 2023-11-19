@@ -2,6 +2,8 @@
 <?php
 // Used to keep data in table upon redirect.
 session_start();
+session_regenerate_id();
+
 $formData = isset($_SESSION['signup_form_data']) ? $_SESSION['signup_form_data'] : [];
 unset($_SESSION['signup_form_data']);
 $first_name = isset($formData['first_name']) ? htmlspecialchars($formData['first_name']) : '';
@@ -40,6 +42,7 @@ $email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
+                    <?= isset($_GET["msg"]) && $_GET["msg"] === "password-short" ? "<p class='text-red-500 mt-2'>Password too short. Must be 4+ chars.</p>" : "" ?>
                 </span>
 
             </div>

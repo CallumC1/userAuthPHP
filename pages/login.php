@@ -2,6 +2,14 @@
 <?php
 session_start();
 session_regenerate_id();
+
+// Used to keep data in table upon redirect.
+$formData = isset($_SESSION['login_form_data']) ? $_SESSION['login_form_data'] : [];
+unset($_SESSION['login_form_data']);
+$first_name = isset($formData['first_name']) ? htmlspecialchars($formData['first_name']) : '';
+$last_name = isset($formData['last_name']) ? htmlspecialchars($formData['last_name']) : '';
+$email = isset($formData['email']) ? htmlspecialchars($formData['email']) : '';
+
 ?>
 <div class="flex flex-col items-center justify-center mt-[7rem]">
     <div class="bg-slate-50 drop-shadow-xl w-[22rem] h-full border-2 border-black p-4">
@@ -14,23 +22,25 @@ session_regenerate_id();
 
                 <span class="flex flex-col">
                     <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="Your first name" required>
+                    <input type="text" id="first_name" name="first_name" placeholder="Your first name" value="<?=$first_name?>" required>
                 </span>
 
                 <span class="flex flex-col">
                     <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" placeholder="Your last name" required>
+                    <input type="text" id="last_name" name="last_name" placeholder="Your last name" value="<?=$last_name?>" required>
                 </span>
 
                 <span class="flex flex-col">
                     <label for="email">Email </label>
-                    <input type="email" id="email" name="email" placeholder="Your email address" required>
+                    <input type="email" id="email" name="email" placeholder="Your email address" value="<?=$email?>" required>
+                    <?= isset($_GET["msg"]) && $_GET["msg"] === "invalid-user" ? "<p class='text-red-500'>Account with email does not exist.</p>" : "" ?>
                 </span>
 
                 <span class="flex flex-col">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <input type="password" id="password" name="password" placeholder="Your password" required>
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
+                    <?= isset($_GET["msg"]) && $_GET["msg"] === "invalid-password" ? "<p class='text-red-500 mt-2'>Password incorrect.</p>" : "" ?>
                 </span>
 
             </div>
