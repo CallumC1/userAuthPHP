@@ -41,12 +41,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
             $_SESSION['user_data'] = $userData;
         } else {
-            echo("Invalid Password.");
+            echo("Invalid username or password.");
             header("Location: /userauthphp/pages/login.php?msg=invalid-password");
         }
 
     } else {
-        echo("Invalid username.");
+        echo("Invalid username or password.");
         header("Location: /userauthphp/pages/login.php?msg=invalid-user");
     }
 
