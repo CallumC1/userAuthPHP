@@ -2,7 +2,6 @@
 session_start();
 session_regenerate_id(true);
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $first_name = $_POST["first_name"];
@@ -41,12 +40,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
             $_SESSION['user_data'] = $userData;
         } else {
-            echo("Invalid username or password.");
+            echo("Invalid Password.");
             header("Location: /userauthphp/pages/login.php?msg=invalid-password");
         }
 
     } else {
-        echo("Invalid username or password.");
+        echo("Invalid username.");
         header("Location: /userauthphp/pages/login.php?msg=invalid-user");
     }
 
