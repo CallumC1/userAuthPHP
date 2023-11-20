@@ -1,12 +1,13 @@
 <?php
-session_start();
+include("./generate_csrf.php");
+generate_csrf();
+
+// Session already started from csrf.
 session_regenerate_id(true);
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        echo($_SESSION['csrf_token']);
-        echo "<br> POST" . $_POST['csrf_token'];
         die("Token validation failed (CSRF)");
     }
 

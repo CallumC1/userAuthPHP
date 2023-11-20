@@ -1,8 +1,11 @@
-<?php include("../comp/header.php") ?>
+<?php 
+include("../comp/header.php");
+include("../handlers/generate_csrf.php"); ?>
 <?php
-// Used to keep data in table upon redirect.
-session_start();
+// Sessions used to keep data in table upon redirect.
 session_regenerate_id();
+generate_csrf();
+
 
 $formData = isset($_SESSION['signup_form_data']) ? $_SESSION['signup_form_data'] : [];
 unset($_SESSION['signup_form_data']);
@@ -55,6 +58,8 @@ if (isset($_GET["msg"]))
                 </span>
 
             </div>
+
+            <?=add_csrf(); ?>
 
             <button type="submit"
                 class="bg-green-600 hover:bg-green-500 transition-colors duration-200 text-center w-full py-2 mt-8 mb-2 text-white font-semibold">

@@ -1,5 +1,8 @@
 <?php
-session_start();
+include("./generate_csrf.php");
+generate_csrf();
+
+// Session already started from csrf.
 session_regenerate_id(true);
 
 
