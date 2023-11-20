@@ -1,6 +1,6 @@
 <?php
 
 // Redirect to main index page
-Header("Location: pages/index.php")
+Header("Location: /userauthphp/pages/index.php")
 
 ?>

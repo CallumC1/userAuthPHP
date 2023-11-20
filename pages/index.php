@@ -12,10 +12,10 @@
         </p>
     </div>
 
-    <div>
-        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["user_id"] : "" ?>
-        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated_on"] : "" ?>
-        <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated"] : "" ?>
+    <div class="mx-auto w-fit">
+        <p>User ID: <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["user_id"] : "" ?></p>
+        <p>Authed On: <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated_on"] : "" ?></p>
+        <p>Is Authed: <?= isset($_SESSION["user_data"]) ? $_SESSION["user_data"]["authenticated"] : "" ?></p>
     </div>
 </body>
 </html>

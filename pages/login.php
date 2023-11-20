@@ -1,7 +1,12 @@
 <?php include("../comp/header.php") ?>
+<?php include("../handlers/generate_csrf.php") ?>
+
 <?php
-session_start();
+// Session already started in generate_csrf.php
 session_regenerate_id();
+generate_csrf();
+echo($_SESSION['csrf_token']);
+
 
 // Used to keep data in table upon redirect.
 $formData = isset($_SESSION['login_form_data']) ? $_SESSION['login_form_data'] : [];
@@ -50,6 +55,8 @@ if (isset($_GET["msg"]))
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
                     <?= $msg === "invalid-password" ? "<p class='text-red-500 mt-2'>Password incorrect.</p>" : "" ?>
                 </span>
+                
+                <input type="hidden" name="csrf_token" value="<?= isset($_SESSION['csrf_token']) ? $_SESSION['csrf_token'] : "" ; ?>">
 
             </div>
 

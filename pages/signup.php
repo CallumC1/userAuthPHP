@@ -51,7 +51,7 @@ if (isset($_GET["msg"]))
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
                     <img src="/userauthphp/src/assets/feather-icons/eye-off.svg" alt="Show Password" class="ml-auto mr-4 w-4 h-full -mt-6" id="togglePassword">
-                    <?= $msg === "password-short" ? "<p class='text-red-500 mt-2'>Password too short. Must be 4+ chars.</p>" : "" ?>
+                    <?= $msg === "password-short" ? "<p class='text-red-500 mt-2'>Password too short. (5+ characters )</p>" : "" ?>
                 </span>
 
             </div>

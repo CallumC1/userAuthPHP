@@ -4,11 +4,18 @@ session_regenerate_id(true);
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        echo($_SESSION['csrf_token']);
+        echo "<br> POST" . $_POST['csrf_token'];
+        die("Token validation failed (CSRF)");
+    }
+
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    // Store data to be sent back into the form on redirect.
     $formData = [
         'first_name' => $first_name,
         'last_name'  => $last_name,
